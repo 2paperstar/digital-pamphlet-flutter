@@ -24,6 +24,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<BottomNavigationBloc>()),
       ],
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         routerConfig: router,
         theme: theme,
       ),
