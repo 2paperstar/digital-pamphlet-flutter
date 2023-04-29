@@ -25,10 +25,13 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<BottomNavigationBloc>()),
         BlocProvider(create: (_) => getIt<ExhibitionBloc>()),
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        routerConfig: router,
-        theme: theme,
+      child: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routerConfig: router,
+          theme: theme,
+        ),
       ),
     );
   }
