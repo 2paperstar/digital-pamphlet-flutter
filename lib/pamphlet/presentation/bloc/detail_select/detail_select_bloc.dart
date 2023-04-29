@@ -18,8 +18,6 @@ class DetailSelectBloc extends Bloc<DetailSelectEvent, DetailSelectState> {
             state.maybeWhen(
               selected: (floor, _) =>
                   DetailSelectState.unselected(floor: floor),
-              detailsShown: (floor, _) =>
-                  DetailSelectState.unselected(floor: floor),
               orElse: () => state,
             ),
           ),
@@ -34,12 +32,7 @@ class DetailSelectBloc extends Bloc<DetailSelectEvent, DetailSelectState> {
               orElse: () => state,
             ),
           ),
-          showDetails: () => state.whenOrNull(
-            selected: (floor, booth) => {
-              emit(DetailSelectState.detailsShown(floor: floor, booth: booth)),
-            },
-          ),
-        )
+        ),
       },
     );
   }

@@ -9,9 +9,4 @@ class DetailSelectState with _$DetailSelectState {
     required int floor,
     required int booth,
   }) = _Selected;
-
-  const factory DetailSelectState.detailsShown({
-    required int floor,
-    required int booth,
-  }) = _DetailsShown;
 }

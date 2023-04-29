@@ -21,7 +21,6 @@ mixin _$DetailSelectEvent {
     required TResult Function(int floor) selectFloor,
     required TResult Function(int booth) selectBooth,
     required TResult Function() unselectBooth,
-    required TResult Function() showDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +28,6 @@ mixin _$DetailSelectEvent {
     TResult? Function(int floor)? selectFloor,
     TResult? Function(int booth)? selectBooth,
     TResult? Function()? unselectBooth,
-    TResult? Function()? showDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +35,6 @@ mixin _$DetailSelectEvent {
     TResult Function(int floor)? selectFloor,
     TResult Function(int booth)? selectBooth,
     TResult Function()? unselectBooth,
-    TResult Function()? showDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +43,6 @@ mixin _$DetailSelectEvent {
     required TResult Function(_SelectFloor value) selectFloor,
     required TResult Function(_SelectBooth value) selectBooth,
     required TResult Function(_UnselectBooth value) unselectBooth,
-    required TResult Function(_ShowDetails value) showDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +50,6 @@ mixin _$DetailSelectEvent {
     TResult? Function(_SelectFloor value)? selectFloor,
     TResult? Function(_SelectBooth value)? selectBooth,
     TResult? Function(_UnselectBooth value)? unselectBooth,
-    TResult? Function(_ShowDetails value)? showDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +57,6 @@ mixin _$DetailSelectEvent {
     TResult Function(_SelectFloor value)? selectFloor,
     TResult Function(_SelectBooth value)? selectBooth,
     TResult Function(_UnselectBooth value)? unselectBooth,
-    TResult Function(_ShowDetails value)? showDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,7 +147,6 @@ class _$_SelectFloor implements _SelectFloor {
     required TResult Function(int floor) selectFloor,
     required TResult Function(int booth) selectBooth,
     required TResult Function() unselectBooth,
-    required TResult Function() showDetails,
   }) {
     return selectFloor(floor);
   }
@@ -164,7 +157,6 @@ class _$_SelectFloor implements _SelectFloor {
     TResult? Function(int floor)? selectFloor,
     TResult? Function(int booth)? selectBooth,
     TResult? Function()? unselectBooth,
-    TResult? Function()? showDetails,
   }) {
     return selectFloor?.call(floor);
   }
@@ -175,7 +167,6 @@ class _$_SelectFloor implements _SelectFloor {
     TResult Function(int floor)? selectFloor,
     TResult Function(int booth)? selectBooth,
     TResult Function()? unselectBooth,
-    TResult Function()? showDetails,
     required TResult orElse(),
   }) {
     if (selectFloor != null) {
@@ -190,7 +181,6 @@ class _$_SelectFloor implements _SelectFloor {
     required TResult Function(_SelectFloor value) selectFloor,
     required TResult Function(_SelectBooth value) selectBooth,
     required TResult Function(_UnselectBooth value) unselectBooth,
-    required TResult Function(_ShowDetails value) showDetails,
   }) {
     return selectFloor(this);
   }
@@ -201,7 +191,6 @@ class _$_SelectFloor implements _SelectFloor {
     TResult? Function(_SelectFloor value)? selectFloor,
     TResult? Function(_SelectBooth value)? selectBooth,
     TResult? Function(_UnselectBooth value)? unselectBooth,
-    TResult? Function(_ShowDetails value)? showDetails,
   }) {
     return selectFloor?.call(this);
   }
@@ -212,7 +201,6 @@ class _$_SelectFloor implements _SelectFloor {
     TResult Function(_SelectFloor value)? selectFloor,
     TResult Function(_SelectBooth value)? selectBooth,
     TResult Function(_UnselectBooth value)? unselectBooth,
-    TResult Function(_ShowDetails value)? showDetails,
     required TResult orElse(),
   }) {
     if (selectFloor != null) {
@@ -298,7 +286,6 @@ class _$_SelectBooth implements _SelectBooth {
     required TResult Function(int floor) selectFloor,
     required TResult Function(int booth) selectBooth,
     required TResult Function() unselectBooth,
-    required TResult Function() showDetails,
   }) {
     return selectBooth(booth);
   }
@@ -309,7 +296,6 @@ class _$_SelectBooth implements _SelectBooth {
     TResult? Function(int floor)? selectFloor,
     TResult? Function(int booth)? selectBooth,
     TResult? Function()? unselectBooth,
-    TResult? Function()? showDetails,
   }) {
     return selectBooth?.call(booth);
   }
@@ -320,7 +306,6 @@ class _$_SelectBooth implements _SelectBooth {
     TResult Function(int floor)? selectFloor,
     TResult Function(int booth)? selectBooth,
     TResult Function()? unselectBooth,
-    TResult Function()? showDetails,
     required TResult orElse(),
   }) {
     if (selectBooth != null) {
@@ -335,7 +320,6 @@ class _$_SelectBooth implements _SelectBooth {
     required TResult Function(_SelectFloor value) selectFloor,
     required TResult Function(_SelectBooth value) selectBooth,
     required TResult Function(_UnselectBooth value) unselectBooth,
-    required TResult Function(_ShowDetails value) showDetails,
   }) {
     return selectBooth(this);
   }
@@ -346,7 +330,6 @@ class _$_SelectBooth implements _SelectBooth {
     TResult? Function(_SelectFloor value)? selectFloor,
     TResult? Function(_SelectBooth value)? selectBooth,
     TResult? Function(_UnselectBooth value)? unselectBooth,
-    TResult? Function(_ShowDetails value)? showDetails,
   }) {
     return selectBooth?.call(this);
   }
@@ -357,7 +340,6 @@ class _$_SelectBooth implements _SelectBooth {
     TResult Function(_SelectFloor value)? selectFloor,
     TResult Function(_SelectBooth value)? selectBooth,
     TResult Function(_UnselectBooth value)? unselectBooth,
-    TResult Function(_ShowDetails value)? showDetails,
     required TResult orElse(),
   }) {
     if (selectBooth != null) {
@@ -417,7 +399,6 @@ class _$_UnselectBooth implements _UnselectBooth {
     required TResult Function(int floor) selectFloor,
     required TResult Function(int booth) selectBooth,
     required TResult Function() unselectBooth,
-    required TResult Function() showDetails,
   }) {
     return unselectBooth();
   }
@@ -428,7 +409,6 @@ class _$_UnselectBooth implements _UnselectBooth {
     TResult? Function(int floor)? selectFloor,
     TResult? Function(int booth)? selectBooth,
     TResult? Function()? unselectBooth,
-    TResult? Function()? showDetails,
   }) {
     return unselectBooth?.call();
   }
@@ -439,7 +419,6 @@ class _$_UnselectBooth implements _UnselectBooth {
     TResult Function(int floor)? selectFloor,
     TResult Function(int booth)? selectBooth,
     TResult Function()? unselectBooth,
-    TResult Function()? showDetails,
     required TResult orElse(),
   }) {
     if (unselectBooth != null) {
@@ -454,7 +433,6 @@ class _$_UnselectBooth implements _UnselectBooth {
     required TResult Function(_SelectFloor value) selectFloor,
     required TResult Function(_SelectBooth value) selectBooth,
     required TResult Function(_UnselectBooth value) unselectBooth,
-    required TResult Function(_ShowDetails value) showDetails,
   }) {
     return unselectBooth(this);
   }
@@ -465,7 +443,6 @@ class _$_UnselectBooth implements _UnselectBooth {
     TResult? Function(_SelectFloor value)? selectFloor,
     TResult? Function(_SelectBooth value)? selectBooth,
     TResult? Function(_UnselectBooth value)? unselectBooth,
-    TResult? Function(_ShowDetails value)? showDetails,
   }) {
     return unselectBooth?.call(this);
   }
@@ -476,7 +453,6 @@ class _$_UnselectBooth implements _UnselectBooth {
     TResult Function(_SelectFloor value)? selectFloor,
     TResult Function(_SelectBooth value)? selectBooth,
     TResult Function(_UnselectBooth value)? unselectBooth,
-    TResult Function(_ShowDetails value)? showDetails,
     required TResult orElse(),
   }) {
     if (unselectBooth != null) {
@@ -491,141 +467,24 @@ abstract class _UnselectBooth implements DetailSelectEvent {
 }
 
 /// @nodoc
-abstract class _$$_ShowDetailsCopyWith<$Res> {
-  factory _$$_ShowDetailsCopyWith(
-          _$_ShowDetails value, $Res Function(_$_ShowDetails) then) =
-      __$$_ShowDetailsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ShowDetailsCopyWithImpl<$Res>
-    extends _$DetailSelectEventCopyWithImpl<$Res, _$_ShowDetails>
-    implements _$$_ShowDetailsCopyWith<$Res> {
-  __$$_ShowDetailsCopyWithImpl(
-      _$_ShowDetails _value, $Res Function(_$_ShowDetails) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_ShowDetails implements _ShowDetails {
-  const _$_ShowDetails();
-
-  @override
-  String toString() {
-    return 'DetailSelectEvent.showDetails()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ShowDetails);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int floor) selectFloor,
-    required TResult Function(int booth) selectBooth,
-    required TResult Function() unselectBooth,
-    required TResult Function() showDetails,
-  }) {
-    return showDetails();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int floor)? selectFloor,
-    TResult? Function(int booth)? selectBooth,
-    TResult? Function()? unselectBooth,
-    TResult? Function()? showDetails,
-  }) {
-    return showDetails?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int floor)? selectFloor,
-    TResult Function(int booth)? selectBooth,
-    TResult Function()? unselectBooth,
-    TResult Function()? showDetails,
-    required TResult orElse(),
-  }) {
-    if (showDetails != null) {
-      return showDetails();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SelectFloor value) selectFloor,
-    required TResult Function(_SelectBooth value) selectBooth,
-    required TResult Function(_UnselectBooth value) unselectBooth,
-    required TResult Function(_ShowDetails value) showDetails,
-  }) {
-    return showDetails(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SelectFloor value)? selectFloor,
-    TResult? Function(_SelectBooth value)? selectBooth,
-    TResult? Function(_UnselectBooth value)? unselectBooth,
-    TResult? Function(_ShowDetails value)? showDetails,
-  }) {
-    return showDetails?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SelectFloor value)? selectFloor,
-    TResult Function(_SelectBooth value)? selectBooth,
-    TResult Function(_UnselectBooth value)? unselectBooth,
-    TResult Function(_ShowDetails value)? showDetails,
-    required TResult orElse(),
-  }) {
-    if (showDetails != null) {
-      return showDetails(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ShowDetails implements DetailSelectEvent {
-  const factory _ShowDetails() = _$_ShowDetails;
-}
-
-/// @nodoc
 mixin _$DetailSelectState {
   int get floor => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
     required TResult Function(int floor, int booth) selected,
-    required TResult Function(int floor, int booth) detailsShown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
     TResult? Function(int floor, int booth)? selected,
-    TResult? Function(int floor, int booth)? detailsShown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
     TResult Function(int floor, int booth)? selected,
-    TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -633,21 +492,18 @@ mixin _$DetailSelectState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unselected value) unselected,
     required TResult Function(_Selected value) selected,
-    required TResult Function(_DetailsShown value) detailsShown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unselected value)? unselected,
     TResult? Function(_Selected value)? selected,
-    TResult? Function(_DetailsShown value)? detailsShown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unselected value)? unselected,
     TResult Function(_Selected value)? selected,
-    TResult Function(_DetailsShown value)? detailsShown,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -759,7 +615,6 @@ class _$_Unselected implements _Unselected {
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
     required TResult Function(int floor, int booth) selected,
-    required TResult Function(int floor, int booth) detailsShown,
   }) {
     return unselected(floor);
   }
@@ -769,7 +624,6 @@ class _$_Unselected implements _Unselected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
     TResult? Function(int floor, int booth)? selected,
-    TResult? Function(int floor, int booth)? detailsShown,
   }) {
     return unselected?.call(floor);
   }
@@ -779,7 +633,6 @@ class _$_Unselected implements _Unselected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
     TResult Function(int floor, int booth)? selected,
-    TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) {
     if (unselected != null) {
@@ -793,7 +646,6 @@ class _$_Unselected implements _Unselected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unselected value) unselected,
     required TResult Function(_Selected value) selected,
-    required TResult Function(_DetailsShown value) detailsShown,
   }) {
     return unselected(this);
   }
@@ -803,7 +655,6 @@ class _$_Unselected implements _Unselected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unselected value)? unselected,
     TResult? Function(_Selected value)? selected,
-    TResult? Function(_DetailsShown value)? detailsShown,
   }) {
     return unselected?.call(this);
   }
@@ -813,7 +664,6 @@ class _$_Unselected implements _Unselected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unselected value)? unselected,
     TResult Function(_Selected value)? selected,
-    TResult Function(_DetailsShown value)? detailsShown,
     required TResult orElse(),
   }) {
     if (unselected != null) {
@@ -910,7 +760,6 @@ class _$_Selected implements _Selected {
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
     required TResult Function(int floor, int booth) selected,
-    required TResult Function(int floor, int booth) detailsShown,
   }) {
     return selected(floor, booth);
   }
@@ -920,7 +769,6 @@ class _$_Selected implements _Selected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
     TResult? Function(int floor, int booth)? selected,
-    TResult? Function(int floor, int booth)? detailsShown,
   }) {
     return selected?.call(floor, booth);
   }
@@ -930,7 +778,6 @@ class _$_Selected implements _Selected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
     TResult Function(int floor, int booth)? selected,
-    TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) {
     if (selected != null) {
@@ -944,7 +791,6 @@ class _$_Selected implements _Selected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unselected value) unselected,
     required TResult Function(_Selected value) selected,
-    required TResult Function(_DetailsShown value) detailsShown,
   }) {
     return selected(this);
   }
@@ -954,7 +800,6 @@ class _$_Selected implements _Selected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unselected value)? unselected,
     TResult? Function(_Selected value)? selected,
-    TResult? Function(_DetailsShown value)? detailsShown,
   }) {
     return selected?.call(this);
   }
@@ -964,7 +809,6 @@ class _$_Selected implements _Selected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unselected value)? unselected,
     TResult Function(_Selected value)? selected,
-    TResult Function(_DetailsShown value)? detailsShown,
     required TResult orElse(),
   }) {
     if (selected != null) {
@@ -984,158 +828,5 @@ abstract class _Selected implements DetailSelectState {
   @override
   @JsonKey(ignore: true)
   _$$_SelectedCopyWith<_$_Selected> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_DetailsShownCopyWith<$Res>
-    implements $DetailSelectStateCopyWith<$Res> {
-  factory _$$_DetailsShownCopyWith(
-          _$_DetailsShown value, $Res Function(_$_DetailsShown) then) =
-      __$$_DetailsShownCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int floor, int booth});
-}
-
-/// @nodoc
-class __$$_DetailsShownCopyWithImpl<$Res>
-    extends _$DetailSelectStateCopyWithImpl<$Res, _$_DetailsShown>
-    implements _$$_DetailsShownCopyWith<$Res> {
-  __$$_DetailsShownCopyWithImpl(
-      _$_DetailsShown _value, $Res Function(_$_DetailsShown) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? floor = null,
-    Object? booth = null,
-  }) {
-    return _then(_$_DetailsShown(
-      floor: null == floor
-          ? _value.floor
-          : floor // ignore: cast_nullable_to_non_nullable
-              as int,
-      booth: null == booth
-          ? _value.booth
-          : booth // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_DetailsShown implements _DetailsShown {
-  const _$_DetailsShown({required this.floor, required this.booth});
-
-  @override
-  final int floor;
-  @override
-  final int booth;
-
-  @override
-  String toString() {
-    return 'DetailSelectState.detailsShown(floor: $floor, booth: $booth)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_DetailsShown &&
-            (identical(other.floor, floor) || other.floor == floor) &&
-            (identical(other.booth, booth) || other.booth == booth));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, floor, booth);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_DetailsShownCopyWith<_$_DetailsShown> get copyWith =>
-      __$$_DetailsShownCopyWithImpl<_$_DetailsShown>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int floor) unselected,
-    required TResult Function(int floor, int booth) selected,
-    required TResult Function(int floor, int booth) detailsShown,
-  }) {
-    return detailsShown(floor, booth);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(int floor)? unselected,
-    TResult? Function(int floor, int booth)? selected,
-    TResult? Function(int floor, int booth)? detailsShown,
-  }) {
-    return detailsShown?.call(floor, booth);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int floor)? unselected,
-    TResult Function(int floor, int booth)? selected,
-    TResult Function(int floor, int booth)? detailsShown,
-    required TResult orElse(),
-  }) {
-    if (detailsShown != null) {
-      return detailsShown(floor, booth);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unselected value) unselected,
-    required TResult Function(_Selected value) selected,
-    required TResult Function(_DetailsShown value) detailsShown,
-  }) {
-    return detailsShown(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unselected value)? unselected,
-    TResult? Function(_Selected value)? selected,
-    TResult? Function(_DetailsShown value)? detailsShown,
-  }) {
-    return detailsShown?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unselected value)? unselected,
-    TResult Function(_Selected value)? selected,
-    TResult Function(_DetailsShown value)? detailsShown,
-    required TResult orElse(),
-  }) {
-    if (detailsShown != null) {
-      return detailsShown(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DetailsShown implements DetailSelectState {
-  const factory _DetailsShown(
-      {required final int floor, required final int booth}) = _$_DetailsShown;
-
-  @override
-  int get floor;
-  int get booth;
-  @override
-  @JsonKey(ignore: true)
-  _$$_DetailsShownCopyWith<_$_DetailsShown> get copyWith =>
       throw _privateConstructorUsedError;
 }

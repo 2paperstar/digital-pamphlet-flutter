@@ -19,7 +19,7 @@ const _boothBoxList = [
 class PamphletView extends StatelessWidget {
   const PamphletView({super.key});
 
-  Widget _buildDetail() {
+  Widget _buildDetail(int index) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -44,11 +44,11 @@ class PamphletView extends StatelessWidget {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('메리 트랙 4호'),
-                        Text('즐거운 마음으로 커피를 내려 파는 곳'),
-                        Text('0000'),
-                        Text('운영 중 • 대기열 n 명'),
+                      children: [
+                        Text(_boothBoxList[index].text),
+                        const Text('즐거운 마음으로 커피를 내려 파는 곳'),
+                        const Text('0000'),
+                        const Text('운영 중 • 대기열 n 명'),
                       ],
                     ),
                   ),
@@ -56,10 +56,15 @@ class PamphletView extends StatelessWidget {
                     children: [
                       Material(
                         color: Colors.transparent,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.menu),
-                        ),
+                        child: Builder(builder: (context) {
+                          return IconButton(
+                            onPressed: () => showModalBottomSheet(
+                              context: context,
+                              builder: (context) => Container(),
+                            ),
+                            icon: const Icon(Icons.menu),
+                          );
+                        }),
                       ),
                       const Text('상세보기'),
                     ],
@@ -134,8 +139,7 @@ class PamphletView extends StatelessWidget {
           BlocBuilder<DetailSelectBloc, DetailSelectState>(
             builder: (context, state) => state.when(
               unselected: (floor) => Text('$floor'),
-              selected: (floor, booth) => _buildDetail(),
-              detailsShown: (floor, booth) => _buildDetail(),
+              selected: (floor, booth) => _buildDetail(booth),
             ),
           ),
         ],
