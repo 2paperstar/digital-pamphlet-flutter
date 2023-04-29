@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.digital_pamphlet">
+    package="com.paperstar.pamphlet">
    <application
         android:label="digital_pamphlet"
         android:name="${applicationName}"

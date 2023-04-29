@@ -1,4 +1,4 @@
-package com.example.digital_pamphlet
+package com.paperstar.pamphlet
 
 import io.flutter.embedding.android.FlutterActivity
 

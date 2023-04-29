@@ -1,0 +1,2 @@
+json_key_file("pc-api-7406882483388754334-767-86802e3c9eea.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("com.paperstar.pamphlet") # e.g. com.krausefx.app
