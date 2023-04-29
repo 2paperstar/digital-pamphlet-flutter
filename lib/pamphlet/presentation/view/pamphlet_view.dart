@@ -167,7 +167,10 @@ class PamphletView extends StatelessWidget {
           ),
           BlocBuilder<DetailSelectBloc, DetailSelectState>(
             builder: (context, state) => state.when(
-              unselected: (floor) => Text('$floor'),
+              unselected: (floor) => Padding(
+                padding: const EdgeInsets.all(16),
+                child: Text('${floor + 1}층의 부스를 선택해주세요'),
+              ),
               selected: (floor, booth) => _buildDetail(booth),
             ),
           ),
