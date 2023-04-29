@@ -1,11 +1,13 @@
 import 'package:digital_pamphlet/common/di/get_it.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/detail_select/detail_select_bloc.dart';
+import 'package:digital_pamphlet/notification/presentation/view/notification_view.dart';
 import 'package:digital_pamphlet/pamphlet/domain/booth_box.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/pamphlet_image/pamphlet_image_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/widget/booth_bottom_sheet.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/widget/pamphlet_canvas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 const _imageUrl =
     'https://media.discordapp.net/attachments/1077054339799060551/1101669829003444224/image.png?width=1038&height=1120';
@@ -97,29 +99,44 @@ class PamphletView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            height: 32 + 8 * 2,
-            child: ListView.separated(
-              padding: const EdgeInsets.all(8),
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => const SizedBox(width: 4),
-              itemCount: 3,
-              itemBuilder: (context, index) =>
-                  BlocBuilder<DetailSelectBloc, DetailSelectState>(
-                builder: (context, state) {
-                  return ActionChip(
-                    label: Text('${index + 1}층'),
-                    onPressed: () => context
-                        .read<DetailSelectBloc>()
-                        .add(DetailSelectEvent.selectFloor(index)),
-                    backgroundColor: state.floor == index
-                        ? Colors.grey.shade300
-                        : Colors.grey,
-                  );
-                },
+          Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: 32 + 8 * 2,
+                  child: ListView.separated(
+                    padding: const EdgeInsets.all(8),
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 4),
+                    itemCount: 3,
+                    itemBuilder: (context, index) =>
+                        BlocBuilder<DetailSelectBloc, DetailSelectState>(
+                      builder: (context, state) {
+                        return ActionChip(
+                          label: Text('${index + 1}층'),
+                          onPressed: () => context
+                              .read<DetailSelectBloc>()
+                              .add(DetailSelectEvent.selectFloor(index)),
+                          backgroundColor: state.floor == index
+                              ? Colors.grey.shade300
+                              : Colors.grey,
+                        );
+                      },
+                    ),
+                  ),
+                ),
               ),
-            ),
+              IconButton(
+                onPressed: () => context.push('/notification'),
+                splashRadius: 20,
+                icon: const Badge(
+                  isLabelVisible: false,
+                  child: Icon(Icons.notifications_outlined),
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 400,
