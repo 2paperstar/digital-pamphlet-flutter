@@ -21,44 +21,58 @@ class MainView extends StatelessWidget {
       BoothEventsView(),
       Text('4'),
     ];
-    return BlocProvider(
-      create: (context) => getIt<DetailSelectBloc>(),
-      child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
-        builder: (context, state) {
-          return Scaffold(
-            body: SafeArea(child: pages[state.item.index]),
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: state.item.index,
-              onTap: (value) => context
-                  .read<BottomNavigationBloc>()
-                  .add(BottomNavigationEvent.select(
-                    BottomNavigationItems.values[value],
-                  )),
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: '행사장',
+    return DefaultTabController(
+      length: pages.length,
+      child: BlocProvider(
+        create: (context) => getIt<DetailSelectBloc>(),
+        child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
+          builder: (context, state) {
+            final tabController = DefaultTabController.of(context);
+            return BlocListener<BottomNavigationBloc, BottomNavigationState>(
+              listener: (context, state) =>
+                  tabController.animateTo(state.item.index),
+              listenWhen: (previous, current) => previous.item != current.item,
+              child: Scaffold(
+                body: const SafeArea(child: TabBarView(children: pages)),
+                bottomNavigationBar: AnimatedBuilder(
+                  animation: tabController.animation!,
+                  builder: (context, snapshot) {
+                    return BottomNavigationBar(
+                      currentIndex: tabController.index,
+                      onTap: (value) => context
+                          .read<BottomNavigationBloc>()
+                          .add(BottomNavigationEvent.select(
+                            BottomNavigationItems.values[value],
+                          )),
+                      items: const [
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.home),
+                          label: '행사장',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.info),
+                          label: '부스설명',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.category),
+                          label: '부스물품',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.local_activity),
+                          label: '부스이벤트',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.celebration),
+                          label: '행사이벤트',
+                        ),
+                      ],
+                    );
+                  },
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.info),
-                  label: '부스설명',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.category),
-                  label: '부스물품',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.local_activity),
-                  label: '부스이벤트',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.celebration),
-                  label: '행사이벤트',
-                ),
-              ],
-            ),
-          );
-        },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
