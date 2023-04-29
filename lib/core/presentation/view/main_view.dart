@@ -13,6 +13,42 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MainView extends StatelessWidget {
   const MainView({super.key});
 
+  Widget _buildInputCode() {
+    return Builder(
+      builder: (context) => Container(
+        color: Colors.grey,
+        child: AlertDialog(
+          title: const Text('행사장 코드 입력'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('해당 행사장의 입구에서 부여 받은 행사장 코드를 입력해 주시면 감사하겠습니다'),
+              TextFormField(
+                onChanged: (value) => context
+                    .read<ExhibitionBloc>()
+                    .add(ExhibitionEvent.changeCode(value)),
+              ),
+            ],
+          ),
+          actions: [
+            BlocBuilder<ExhibitionBloc, ExhibitionState>(
+              builder: (context, state) {
+                return TextButton(
+                  onPressed: state.code.isEmpty
+                      ? null
+                      : () => context
+                          .read<ExhibitionBloc>()
+                          .add(const ExhibitionEvent.entrance()),
+                  child: const Text('입장'),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildPages() {
     const pages = [
       PamphletView(),
@@ -81,31 +117,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ExhibitionBloc, ExhibitionState>(
       builder: (context, state) => state.when(
-        unselected: (_) => Container(
-          color: Colors.grey,
-          child: AlertDialog(
-            title: const Text('행사장 코드 입력'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('해당 행사장의 입구에서 부여 받은 행사장 코드를 입력해 주시면 감사하겠습니다'),
-                TextFormField(
-                  onChanged: (value) => () => context
-                      .read<ExhibitionBloc>()
-                      .add(ExhibitionEvent.changeCode(value)),
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => context
-                    .read<ExhibitionBloc>()
-                    .add(const ExhibitionEvent.entrance()),
-                child: const Text('입장'),
-              ),
-            ],
-          ),
-        ),
+        unselected: (_) => _buildInputCode(),
         selected: (code) => _buildPages(),
       ),
     );
