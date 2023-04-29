@@ -1,4 +1,6 @@
 import 'package:digital_pamphlet/booth/presentation/view/booth_description_view.dart';
+import 'package:digital_pamphlet/booth/presentation/view/booth_events_view.dart';
+import 'package:digital_pamphlet/booth/presentation/view/booth_items_view.dart';
 import 'package:digital_pamphlet/common/di/get_it.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom_navigation_items.dart';
@@ -15,8 +17,8 @@ class MainView extends StatelessWidget {
     const pages = [
       PamphletView(),
       BoothDescriptionView(),
-      Text('2'),
-      Text('3'),
+      BoothItemsView(),
+      BoothEventsView(),
       Text('4'),
     ];
     return BlocProvider(
