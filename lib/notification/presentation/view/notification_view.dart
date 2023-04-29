@@ -17,7 +17,7 @@ class NotificationView extends StatelessWidget {
             icon: const Icon(Icons.close),
           ),
           bottom: const TabBar(
-            tabs: [Tab(text: '행사'), Tab(text: '이벤트')],
+            tabs: [Tab(text: '행사'), Tab(text: '부스들')],
           ),
         ),
         body: const TabBarView(
