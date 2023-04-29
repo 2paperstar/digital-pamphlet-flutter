@@ -12,8 +12,20 @@ class NotificationList extends StatelessWidget {
       itemBuilder: (context, index) => ListTile(
         title: const Text('Notification'),
         subtitle: const Text('description'),
-        leading: const CircleAvatar(
-          child: Text('N'),
+        leading: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.centerLeft,
+          children: [
+            const CircleAvatar(
+              child: Text('N'),
+            ),
+            Positioned(
+              left: -8,
+              child: Badge(
+                isLabelVisible: index < 5,
+              ),
+            ),
+          ],
         ),
         trailing: Text(DateFormat.jm().format(DateTime.now())),
       ),
