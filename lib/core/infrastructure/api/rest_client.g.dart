@@ -13,12 +13,35 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://localorder.link:5000/api';
+    baseUrl ??= 'http://localorder.link:5000';
   }
 
   final Dio _dio;
 
   String? baseUrl;
+
+  @override
+  Future<ExhibitionTicket> getTicket(String uuid) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'uuid': uuid};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ExhibitionTicket>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/exhibition/ticket',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ExhibitionTicket.fromJson(_result.data!);
+    return value;
+  }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&

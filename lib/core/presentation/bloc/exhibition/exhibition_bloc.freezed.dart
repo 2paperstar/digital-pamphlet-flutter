@@ -315,37 +315,43 @@ mixin _$ExhibitionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String code) unselected,
-    required TResult Function(String code) selected,
+    required TResult Function(String code) validating,
+    required TResult Function(int exhibitionId, String code) selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String code)? unselected,
-    TResult? Function(String code)? selected,
+    TResult? Function(String code)? validating,
+    TResult? Function(int exhibitionId, String code)? selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String code)? unselected,
-    TResult Function(String code)? selected,
+    TResult Function(String code)? validating,
+    TResult Function(int exhibitionId, String code)? selected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unselected value) unselected,
+    required TResult Function(_Validating value) validating,
     required TResult Function(_Selected value) selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unselected value)? unselected,
+    TResult? Function(_Validating value)? validating,
     TResult? Function(_Selected value)? selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unselected value)? unselected,
+    TResult Function(_Validating value)? validating,
     TResult Function(_Selected value)? selected,
     required TResult orElse(),
   }) =>
@@ -456,7 +462,8 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String code) unselected,
-    required TResult Function(String code) selected,
+    required TResult Function(String code) validating,
+    required TResult Function(int exhibitionId, String code) selected,
   }) {
     return unselected(code);
   }
@@ -465,7 +472,8 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String code)? unselected,
-    TResult? Function(String code)? selected,
+    TResult? Function(String code)? validating,
+    TResult? Function(int exhibitionId, String code)? selected,
   }) {
     return unselected?.call(code);
   }
@@ -474,7 +482,8 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String code)? unselected,
-    TResult Function(String code)? selected,
+    TResult Function(String code)? validating,
+    TResult Function(int exhibitionId, String code)? selected,
     required TResult orElse(),
   }) {
     if (unselected != null) {
@@ -487,6 +496,7 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unselected value) unselected,
+    required TResult Function(_Validating value) validating,
     required TResult Function(_Selected value) selected,
   }) {
     return unselected(this);
@@ -496,6 +506,7 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unselected value)? unselected,
+    TResult? Function(_Validating value)? validating,
     TResult? Function(_Selected value)? selected,
   }) {
     return unselected?.call(this);
@@ -505,6 +516,7 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unselected value)? unselected,
+    TResult Function(_Validating value)? validating,
     TResult Function(_Selected value)? selected,
     required TResult orElse(),
   }) {
@@ -527,6 +539,149 @@ abstract class _Unselected implements ExhibitionState {
 }
 
 /// @nodoc
+abstract class _$$_ValidatingCopyWith<$Res>
+    implements $ExhibitionStateCopyWith<$Res> {
+  factory _$$_ValidatingCopyWith(
+          _$_Validating value, $Res Function(_$_Validating) then) =
+      __$$_ValidatingCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$_ValidatingCopyWithImpl<$Res>
+    extends _$ExhibitionStateCopyWithImpl<$Res, _$_Validating>
+    implements _$$_ValidatingCopyWith<$Res> {
+  __$$_ValidatingCopyWithImpl(
+      _$_Validating _value, $Res Function(_$_Validating) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$_Validating(
+      null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Validating implements _Validating {
+  const _$_Validating(this.code);
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'ExhibitionState.validating(code: $code)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Validating &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ValidatingCopyWith<_$_Validating> get copyWith =>
+      __$$_ValidatingCopyWithImpl<_$_Validating>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String code) unselected,
+    required TResult Function(String code) validating,
+    required TResult Function(int exhibitionId, String code) selected,
+  }) {
+    return validating(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String code)? unselected,
+    TResult? Function(String code)? validating,
+    TResult? Function(int exhibitionId, String code)? selected,
+  }) {
+    return validating?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String code)? unselected,
+    TResult Function(String code)? validating,
+    TResult Function(int exhibitionId, String code)? selected,
+    required TResult orElse(),
+  }) {
+    if (validating != null) {
+      return validating(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unselected value) unselected,
+    required TResult Function(_Validating value) validating,
+    required TResult Function(_Selected value) selected,
+  }) {
+    return validating(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unselected value)? unselected,
+    TResult? Function(_Validating value)? validating,
+    TResult? Function(_Selected value)? selected,
+  }) {
+    return validating?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unselected value)? unselected,
+    TResult Function(_Validating value)? validating,
+    TResult Function(_Selected value)? selected,
+    required TResult orElse(),
+  }) {
+    if (validating != null) {
+      return validating(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Validating implements ExhibitionState {
+  const factory _Validating(final String code) = _$_Validating;
+
+  @override
+  String get code;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ValidatingCopyWith<_$_Validating> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$_SelectedCopyWith<$Res>
     implements $ExhibitionStateCopyWith<$Res> {
   factory _$$_SelectedCopyWith(
@@ -534,7 +689,7 @@ abstract class _$$_SelectedCopyWith<$Res>
       __$$_SelectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String code});
+  $Res call({int exhibitionId, String code});
 }
 
 /// @nodoc
@@ -548,9 +703,14 @@ class __$$_SelectedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? exhibitionId = null,
     Object? code = null,
   }) {
     return _then(_$_Selected(
+      null == exhibitionId
+          ? _value.exhibitionId
+          : exhibitionId // ignore: cast_nullable_to_non_nullable
+              as int,
       null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -562,14 +722,16 @@ class __$$_SelectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Selected implements _Selected {
-  const _$_Selected(this.code);
+  const _$_Selected(this.exhibitionId, this.code);
 
+  @override
+  final int exhibitionId;
   @override
   final String code;
 
   @override
   String toString() {
-    return 'ExhibitionState.selected(code: $code)';
+    return 'ExhibitionState.selected(exhibitionId: $exhibitionId, code: $code)';
   }
 
   @override
@@ -577,11 +739,13 @@ class _$_Selected implements _Selected {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Selected &&
+            (identical(other.exhibitionId, exhibitionId) ||
+                other.exhibitionId == exhibitionId) &&
             (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => Object.hash(runtimeType, exhibitionId, code);
 
   @JsonKey(ignore: true)
   @override
@@ -593,29 +757,32 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String code) unselected,
-    required TResult Function(String code) selected,
+    required TResult Function(String code) validating,
+    required TResult Function(int exhibitionId, String code) selected,
   }) {
-    return selected(code);
+    return selected(exhibitionId, code);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String code)? unselected,
-    TResult? Function(String code)? selected,
+    TResult? Function(String code)? validating,
+    TResult? Function(int exhibitionId, String code)? selected,
   }) {
-    return selected?.call(code);
+    return selected?.call(exhibitionId, code);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String code)? unselected,
-    TResult Function(String code)? selected,
+    TResult Function(String code)? validating,
+    TResult Function(int exhibitionId, String code)? selected,
     required TResult orElse(),
   }) {
     if (selected != null) {
-      return selected(code);
+      return selected(exhibitionId, code);
     }
     return orElse();
   }
@@ -624,6 +791,7 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unselected value) unselected,
+    required TResult Function(_Validating value) validating,
     required TResult Function(_Selected value) selected,
   }) {
     return selected(this);
@@ -633,6 +801,7 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unselected value)? unselected,
+    TResult? Function(_Validating value)? validating,
     TResult? Function(_Selected value)? selected,
   }) {
     return selected?.call(this);
@@ -642,6 +811,7 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unselected value)? unselected,
+    TResult Function(_Validating value)? validating,
     TResult Function(_Selected value)? selected,
     required TResult orElse(),
   }) {
@@ -653,8 +823,10 @@ class _$_Selected implements _Selected {
 }
 
 abstract class _Selected implements ExhibitionState {
-  const factory _Selected(final String code) = _$_Selected;
+  const factory _Selected(final int exhibitionId, final String code) =
+      _$_Selected;
 
+  int get exhibitionId;
   @override
   String get code;
   @override

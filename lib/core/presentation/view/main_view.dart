@@ -119,7 +119,10 @@ class MainView extends StatelessWidget {
     return BlocBuilder<ExhibitionBloc, ExhibitionState>(
       builder: (context, state) => state.when(
         unselected: (_) => _buildInputCode(),
-        selected: (code) => _buildPages(),
+        validating: (_) => const Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        ),
+        selected: (_, __) => _buildPages(),
       ),
     );
   }
