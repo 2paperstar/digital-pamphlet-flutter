@@ -104,19 +104,30 @@ class PamphletView extends StatelessWidget {
           ),
           SizedBox(
             height: 400,
-            child: BlocBuilder<PamphletImageBloc, PamphletImageState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  loaded: (image) => PamphletCanvas(image: image),
-                  orElse: () => Container(),
-                );
-              },
+            child: ClipRect(
+              child: BlocBuilder<PamphletImageBloc, PamphletImageState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    loaded: (image) => PamphletCanvas(
+                      image: image,
+                      onSelectBooth: (index) {
+                        if (index == null) return;
+                        context
+                            .read<DetailSelectBloc>()
+                            .add(DetailSelectEvent.selectBooth(index));
+                      },
+                    ),
+                    orElse: () => Container(),
+                  );
+                },
+              ),
             ),
           ),
           BlocBuilder<DetailSelectBloc, DetailSelectState>(
-            builder: (context, state) => state.maybeWhen(
+            builder: (context, state) => state.when(
               unselected: (floor) => Container(),
-              orElse: () => _buildDetail(),
+              selected: (floor, booth) => _buildDetail(),
+              detailsShown: (floor, booth) => _buildDetail(),
             ),
           ),
         ],
