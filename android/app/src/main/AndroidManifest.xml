@@ -4,7 +4,7 @@
   <application android:usesCleartextTraffic="true" />
   <application
     android:label="digital_pamphlet"
-    android:name="${applicationName}"
+    android:name="달리의 팜플렛"
     android:icon="@mipmap/ic_launcher">
     <activity
       android:name=".MainActivity"
