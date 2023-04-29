@@ -15,8 +15,8 @@ class BoothItemsSearchView extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              automaticallyImplyLeading: false,
               backgroundColor: Colors.transparent,
+              foregroundColor: Colors.black,
               title: Builder(
                 builder: (context) {
                   return TextFormField(
