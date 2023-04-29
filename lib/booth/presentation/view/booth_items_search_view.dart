@@ -9,15 +9,16 @@ class BoothItemsSearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<ItemsSearchBloc>(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Builder(builder: (context) {
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => getIt<ItemsSearchBloc>(),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.transparent,
+              title: Builder(
+                builder: (context) {
                   return TextFormField(
                     onChanged: (value) {
                       context
@@ -28,25 +29,34 @@ class BoothItemsSearchView extends StatelessWidget {
                       icon: Icon(Icons.search),
                     ),
                   );
-                }),
+                },
               ),
-              Expanded(
-                child: BlocBuilder<ItemsSearchBloc, ItemsSearchState>(
-                  builder: (context, state) => state.maybeWhen(
-                    searched: (query, data) => ListView.separated(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => const BoothItem(),
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 8),
-                      itemCount: data.length,
-                    ),
-                    orElse: () => Container(),
+            ),
+            SliverToBoxAdapter(
+              child: BlocBuilder<ItemsSearchBloc, ItemsSearchState>(
+                builder: (context, state) => state.maybeWhen(
+                  searched: (query, data) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Text('${data.length}건의 검색 결과가 있습니다'),
+                      ),
+                      ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => const BoothItem(),
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 20),
+                        itemCount: data.length,
+                      ),
+                    ],
                   ),
+                  orElse: () => Container(),
                 ),
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
