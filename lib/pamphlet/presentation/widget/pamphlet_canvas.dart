@@ -8,12 +8,14 @@ class PamphletCanvas extends StatelessWidget {
   final ui.Image image;
   final void Function(int?)? onSelectBooth;
   final List<BoothBox> boothBoxList;
+  final int? selectedBoothIndex;
 
   const PamphletCanvas({
     super.key,
     required this.image,
     this.onSelectBooth,
     this.boothBoxList = const [],
+    this.selectedBoothIndex,
   });
 
   Rect _getContainedRect(Rect rect, Size size) {
@@ -48,6 +50,7 @@ class PamphletCanvas extends StatelessWidget {
         child: CustomPaint(
           painter: _CustomPainter(
             image: image,
+            selectedBoothIndex: selectedBoothIndex,
             boxList: boothBoxList
                 .map(
                   (r) => _Box(
@@ -74,21 +77,16 @@ class _Box {
 class _CustomPainter extends CustomPainter {
   final ui.Image image;
   final List<_Box> boxList;
+  final int? selectedBoothIndex;
 
-  _CustomPainter({required this.image, required this.boxList});
+  _CustomPainter({
+    required this.image,
+    required this.boxList,
+    this.selectedBoothIndex,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final fillPaint = Paint()
-      ..style = PaintingStyle.fill
-      ..color = Colors.red.withOpacity(0.2)
-      ..isAntiAlias = true;
-    final strokePaint = Paint()
-      ..style = PaintingStyle.stroke
-      ..color = Colors.red
-      ..strokeWidth = 2
-      ..isAntiAlias = true;
-
     final imageRatio =
         min(size.width / image.width, size.height / image.height);
     canvas.drawImageRect(
@@ -101,9 +99,20 @@ class _CustomPainter extends CustomPainter {
           image.height * imageRatio),
       Paint(),
     );
-    for (var element in boxList) {
-      canvas.drawRect(element.rect, fillPaint);
-      canvas.drawRect(element.rect, strokePaint);
+    for (final element in boxList.asMap().entries) {
+      final fillPaint = Paint()
+        ..style = PaintingStyle.fill
+        ..color = element.key == selectedBoothIndex
+            ? Colors.black.withOpacity(0.5)
+            : Colors.red.withOpacity(0.2)
+        ..isAntiAlias = true;
+      final strokePaint = Paint()
+        ..style = PaintingStyle.stroke
+        ..color = Colors.red
+        ..strokeWidth = 2
+        ..isAntiAlias = true;
+      canvas.drawRect(element.value.rect, fillPaint);
+      canvas.drawRect(element.value.rect, strokePaint);
     }
   }
 

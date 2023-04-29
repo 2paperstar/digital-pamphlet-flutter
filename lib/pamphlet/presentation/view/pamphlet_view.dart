@@ -1,6 +1,6 @@
 import 'package:digital_pamphlet/common/di/get_it.dart';
+import 'package:digital_pamphlet/core/presentation/bloc/detail_select/detail_select_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/domain/booth_box.dart';
-import 'package:digital_pamphlet/pamphlet/presentation/bloc/detail_select/detail_select_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/pamphlet_image/pamphlet_image_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/widget/pamphlet_canvas.dart';
 import 'package:flutter/material.dart';
@@ -80,14 +80,9 @@ class PamphletView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => getIt<DetailSelectBloc>()),
-        BlocProvider(
-          create: (context) => getIt<PamphletImageBloc>()
-            ..add(const PamphletImageEvent.loadNetworkImage(_imageUrl)),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => getIt<PamphletImageBloc>()
+        ..add(const PamphletImageEvent.loadNetworkImage(_imageUrl)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -124,6 +119,12 @@ class PamphletView extends StatelessWidget {
                     loaded: (image) => PamphletCanvas(
                       image: image,
                       boothBoxList: _boothBoxList,
+                      selectedBoothIndex: context
+                          .select((DetailSelectBloc bloc) => bloc.state)
+                          .maybeWhen(
+                            selected: (_, index) => index,
+                            orElse: () => null,
+                          ),
                       onSelectBooth: (index) {
                         context.read<DetailSelectBloc>().add(index == null
                             ? const DetailSelectEvent.unselectBooth()
