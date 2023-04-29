@@ -12,7 +12,9 @@ class _RestClient implements RestClient {
   _RestClient(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'http://localorder.link:5000/api';
+  }
 
   final Dio _dio;
 
