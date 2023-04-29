@@ -100,8 +100,9 @@ class BoothItemsView extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Colors.red),
+                          borderRadius: BorderRadius.circular(16),
+                          color: Colors.red,
+                        ),
                       ),
                       const SizedBox(width: 12),
                       Column(
