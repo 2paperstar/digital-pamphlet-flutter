@@ -40,19 +40,19 @@ class MainView extends StatelessWidget {
                   label: '행사장',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.info),
                   label: '부스설명',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.category),
                   label: '부스물품',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.local_activity),
                   label: '부스이벤트',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.celebration),
                   label: '행사이벤트',
                 ),
               ],
