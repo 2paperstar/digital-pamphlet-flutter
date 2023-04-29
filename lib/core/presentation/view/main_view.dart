@@ -11,8 +11,10 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     const pages = [
       PamphletView(),
-      PamphletView(),
-      PamphletView(),
+      Text('1'),
+      Text('2'),
+      Text('3'),
+      Text('4'),
     ];
     return BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
       builder: (context, state) {
@@ -37,6 +39,10 @@ class MainView extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: '부스물품',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: '부스이벤트',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
