@@ -1,3 +1,4 @@
+import 'package:digital_pamphlet/booth/presentation/view/booth_description_view.dart';
 import 'package:digital_pamphlet/common/di/get_it.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom_navigation_items.dart';
@@ -13,7 +14,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     const pages = [
       PamphletView(),
-      Text('1'),
+      BoothDescriptionView(),
       Text('2'),
       Text('3'),
       Text('4'),
