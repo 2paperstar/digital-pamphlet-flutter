@@ -1,4 +1,5 @@
 import 'package:digital_pamphlet/common/di/get_it.dart';
+import 'package:digital_pamphlet/pamphlet/domain/booth_box.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/detail_select/detail_select_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/pamphlet_image/pamphlet_image_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/widget/pamphlet_canvas.dart';
@@ -7,6 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 const _imageUrl =
     'https://media.discordapp.net/attachments/1077054339799060551/1101669829003444224/image.png?width=1038&height=1120';
+const _boothBoxList = [
+  BoothBox(left: 57, top: 147, width: 100, height: 144, text: '트랙4'),
+  BoothBox(left: 412, top: 147, width: 146, height: 144, text: '트랙6'),
+  BoothBox(left: 246, top: 291, width: 168, height: 60, text: '기념품 받는 곳'),
+  BoothBox(left: 159, top: 147, width: 100, height: 144, text: '트랙5'),
+  BoothBox(left: 88, top: 534, width: 70, height: 155, text: '??'),
+];
 
 class PamphletView extends StatelessWidget {
   const PamphletView({super.key});
@@ -110,11 +118,11 @@ class PamphletView extends StatelessWidget {
                   return state.maybeWhen(
                     loaded: (image) => PamphletCanvas(
                       image: image,
+                      boothBoxList: _boothBoxList,
                       onSelectBooth: (index) {
-                        if (index == null) return;
-                        context
-                            .read<DetailSelectBloc>()
-                            .add(DetailSelectEvent.selectBooth(index));
+                        context.read<DetailSelectBloc>().add(index == null
+                            ? const DetailSelectEvent.unselectBooth()
+                            : DetailSelectEvent.selectBooth(index));
                       },
                     ),
                     orElse: () => Container(),
@@ -125,7 +133,7 @@ class PamphletView extends StatelessWidget {
           ),
           BlocBuilder<DetailSelectBloc, DetailSelectState>(
             builder: (context, state) => state.when(
-              unselected: (floor) => Container(),
+              unselected: (floor) => Text('$floor'),
               selected: (floor, booth) => _buildDetail(),
               detailsShown: (floor, booth) => _buildDetail(),
             ),

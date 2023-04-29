@@ -14,8 +14,21 @@ class DetailSelectBloc extends Bloc<DetailSelectEvent, DetailSelectState> {
         event.when(
           selectFloor: (floor) =>
               emit(DetailSelectState.unselected(floor: floor)),
+          unselectBooth: () => emit(
+            state.maybeWhen(
+              selected: (floor, _) =>
+                  DetailSelectState.unselected(floor: floor),
+              detailsShown: (floor, _) =>
+                  DetailSelectState.unselected(floor: floor),
+              orElse: () => state,
+            ),
+          ),
           selectBooth: (booth) => emit(
             state.maybeWhen(
+              unselected: (floor) => DetailSelectState.selected(
+                floor: floor,
+                booth: booth,
+              ),
               selected: (floor, _) =>
                   DetailSelectState.selected(floor: floor, booth: booth),
               orElse: () => state,

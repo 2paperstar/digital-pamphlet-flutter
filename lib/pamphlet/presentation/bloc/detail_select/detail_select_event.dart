@@ -6,5 +6,7 @@ class DetailSelectEvent with _$DetailSelectEvent {
 
   const factory DetailSelectEvent.selectBooth(int booth) = _SelectBooth;
 
+  const factory DetailSelectEvent.unselectBooth() = _UnselectBooth;
+
   const factory DetailSelectEvent.showDetails() = _ShowDetails;
 }

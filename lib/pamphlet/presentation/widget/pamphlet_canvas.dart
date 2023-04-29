@@ -1,16 +1,19 @@
 import 'dart:math';
 import 'dart:ui' as ui;
 
+import 'package:digital_pamphlet/pamphlet/domain/booth_box.dart';
 import 'package:flutter/material.dart';
 
 class PamphletCanvas extends StatelessWidget {
   final ui.Image image;
   final void Function(int?)? onSelectBooth;
+  final List<BoothBox> boothBoxList;
 
   const PamphletCanvas({
     super.key,
     required this.image,
     this.onSelectBooth,
+    this.boothBoxList = const [],
   });
 
   Rect _getContainedRect(Rect rect, Size size) {
@@ -31,18 +34,13 @@ class PamphletCanvas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const originalBoxList = [
-      Rect.fromLTWH(57, 147, 100, 144),
-      Rect.fromLTWH(412, 147, 146, 144),
-      Rect.fromLTWH(246, 291, 168, 60),
-    ];
     return LayoutBuilder(builder: (context, constraints) {
       return GestureDetector(
         onTapUp: (details) {
           final offset = _reverseContainedOffset(
               details.localPosition, constraints.biggest);
-          final index = originalBoxList.indexWhere(
-            (box) => box.contains(offset),
+          final index = boothBoxList.indexWhere(
+            (box) => box.rect.contains(offset),
           );
           final boothId = index == -1 ? null : index;
           onSelectBooth?.call(boothId);
@@ -50,10 +48,10 @@ class PamphletCanvas extends StatelessWidget {
         child: CustomPaint(
           painter: _CustomPainter(
             image: image,
-            boxList: originalBoxList
+            boxList: boothBoxList
                 .map(
                   (r) => _Box(
-                    rect: _getContainedRect(r, constraints.biggest),
+                    rect: _getContainedRect(r.rect, constraints.biggest),
                     text: 'test',
                   ),
                 )
@@ -81,10 +79,14 @@ class _CustomPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
+    final fillPaint = Paint()
       ..style = PaintingStyle.fill
       ..color = Colors.red.withOpacity(0.2)
-      ..strokeWidth = 1
+      ..isAntiAlias = true;
+    final strokePaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..color = Colors.red
+      ..strokeWidth = 2
       ..isAntiAlias = true;
 
     final imageRatio =
@@ -100,7 +102,8 @@ class _CustomPainter extends CustomPainter {
       Paint(),
     );
     for (var element in boxList) {
-      canvas.drawRect(element.rect, paint);
+      canvas.drawRect(element.rect, fillPaint);
+      canvas.drawRect(element.rect, strokePaint);
     }
   }
 
