@@ -20,6 +20,34 @@ class PamphletView extends StatelessWidget {
   const PamphletView({super.key});
 
   Widget _buildDetail(int index) {
+    final description = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          _boothBoxList[index].text,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        const Text('즐거운 마음으로 커피를 내려 파는 곳'),
+        const Text('0000'),
+        const SizedBox(height: 8),
+        const Text('운영 중 • 대기열 n 명'),
+      ],
+    );
+
+    final detailButton = Builder(
+      builder: (context) {
+        return IconButton(
+          visualDensity: VisualDensity.compact,
+          splashRadius: 20,
+          onPressed: () => showModalBottomSheet(
+            context: context,
+            builder: (context) => Container(),
+          ),
+          icon: const Icon(Icons.info),
+        );
+      },
+    );
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -37,41 +65,23 @@ class PamphletView extends StatelessWidget {
               )
             ],
           ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+          child: Material(
+            color: Colors.white,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(child: description),
+                    Column(
                       children: [
-                        Text(_boothBoxList[index].text),
-                        const Text('즐거운 마음으로 커피를 내려 파는 곳'),
-                        const Text('0000'),
-                        const Text('운영 중 • 대기열 n 명'),
+                        detailButton,
+                        const Text('상세보기'),
                       ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Material(
-                        color: Colors.transparent,
-                        child: Builder(builder: (context) {
-                          return IconButton(
-                            onPressed: () => showModalBottomSheet(
-                              context: context,
-                              builder: (context) => Container(),
-                            ),
-                            icon: const Icon(Icons.menu),
-                          );
-                        }),
-                      ),
-                      const Text('상세보기'),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
