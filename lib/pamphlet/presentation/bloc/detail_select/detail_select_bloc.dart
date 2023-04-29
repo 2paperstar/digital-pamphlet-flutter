@@ -13,7 +13,7 @@ class DetailSelectBloc extends Bloc<DetailSelectEvent, DetailSelectState> {
       (event, emit) => {
         event.when(
           selectFloor: (floor) =>
-              emit(DetailSelectState.selected(floor: floor, booth: null)),
+              emit(DetailSelectState.unselected(floor: floor)),
           selectBooth: (booth) => emit(
             state.maybeWhen(
               selected: (floor, _) =>
@@ -23,11 +23,7 @@ class DetailSelectBloc extends Bloc<DetailSelectEvent, DetailSelectState> {
           ),
           showDetails: () => state.whenOrNull(
             selected: (floor, booth) => {
-              if (booth != null)
-                {
-                  emit(DetailSelectState.detailsShown(
-                      floor: floor, booth: booth)),
-                }
+              emit(DetailSelectState.detailsShown(floor: floor, booth: booth)),
             },
           ),
         )

@@ -472,21 +472,21 @@ mixin _$DetailSelectState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
-    required TResult Function(int floor, int? booth) selected,
+    required TResult Function(int floor, int booth) selected,
     required TResult Function(int floor, int booth) detailsShown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
-    TResult? Function(int floor, int? booth)? selected,
+    TResult? Function(int floor, int booth)? selected,
     TResult? Function(int floor, int booth)? detailsShown,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
-    TResult Function(int floor, int? booth)? selected,
+    TResult Function(int floor, int booth)? selected,
     TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) =>
@@ -620,7 +620,7 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
-    required TResult Function(int floor, int? booth) selected,
+    required TResult Function(int floor, int booth) selected,
     required TResult Function(int floor, int booth) detailsShown,
   }) {
     return unselected(floor);
@@ -630,7 +630,7 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
-    TResult? Function(int floor, int? booth)? selected,
+    TResult? Function(int floor, int booth)? selected,
     TResult? Function(int floor, int booth)? detailsShown,
   }) {
     return unselected?.call(floor);
@@ -640,7 +640,7 @@ class _$_Unselected implements _Unselected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
-    TResult Function(int floor, int? booth)? selected,
+    TResult Function(int floor, int booth)? selected,
     TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) {
@@ -704,7 +704,7 @@ abstract class _$$_SelectedCopyWith<$Res>
       __$$_SelectedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int floor, int? booth});
+  $Res call({int floor, int booth});
 }
 
 /// @nodoc
@@ -719,17 +719,17 @@ class __$$_SelectedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? floor = null,
-    Object? booth = freezed,
+    Object? booth = null,
   }) {
     return _then(_$_Selected(
       floor: null == floor
           ? _value.floor
           : floor // ignore: cast_nullable_to_non_nullable
               as int,
-      booth: freezed == booth
+      booth: null == booth
           ? _value.booth
           : booth // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -742,7 +742,7 @@ class _$_Selected implements _Selected {
   @override
   final int floor;
   @override
-  final int? booth;
+  final int booth;
 
   @override
   String toString() {
@@ -771,7 +771,7 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
-    required TResult Function(int floor, int? booth) selected,
+    required TResult Function(int floor, int booth) selected,
     required TResult Function(int floor, int booth) detailsShown,
   }) {
     return selected(floor, booth);
@@ -781,7 +781,7 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
-    TResult? Function(int floor, int? booth)? selected,
+    TResult? Function(int floor, int booth)? selected,
     TResult? Function(int floor, int booth)? detailsShown,
   }) {
     return selected?.call(floor, booth);
@@ -791,7 +791,7 @@ class _$_Selected implements _Selected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
-    TResult Function(int floor, int? booth)? selected,
+    TResult Function(int floor, int booth)? selected,
     TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) {
@@ -838,11 +838,11 @@ class _$_Selected implements _Selected {
 
 abstract class _Selected implements DetailSelectState {
   const factory _Selected(
-      {required final int floor, required final int? booth}) = _$_Selected;
+      {required final int floor, required final int booth}) = _$_Selected;
 
   @override
   int get floor;
-  int? get booth;
+  int get booth;
   @override
   @JsonKey(ignore: true)
   _$$_SelectedCopyWith<_$_Selected> get copyWith =>
@@ -924,7 +924,7 @@ class _$_DetailsShown implements _DetailsShown {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int floor) unselected,
-    required TResult Function(int floor, int? booth) selected,
+    required TResult Function(int floor, int booth) selected,
     required TResult Function(int floor, int booth) detailsShown,
   }) {
     return detailsShown(floor, booth);
@@ -934,7 +934,7 @@ class _$_DetailsShown implements _DetailsShown {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int floor)? unselected,
-    TResult? Function(int floor, int? booth)? selected,
+    TResult? Function(int floor, int booth)? selected,
     TResult? Function(int floor, int booth)? detailsShown,
   }) {
     return detailsShown?.call(floor, booth);
@@ -944,7 +944,7 @@ class _$_DetailsShown implements _DetailsShown {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int floor)? unselected,
-    TResult Function(int floor, int? booth)? selected,
+    TResult Function(int floor, int booth)? selected,
     TResult Function(int floor, int booth)? detailsShown,
     required TResult orElse(),
   }) {

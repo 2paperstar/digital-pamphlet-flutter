@@ -7,7 +7,7 @@ class DetailSelectState with _$DetailSelectState {
 
   const factory DetailSelectState.selected({
     required int floor,
-    required int? booth,
+    required int booth,
   }) = _Selected;
 
   const factory DetailSelectState.detailsShown({
