@@ -1,6 +1,7 @@
 import 'package:digital_pamphlet/common/di/get_it.dart';
 import 'package:digital_pamphlet/common/router.dart';
 import 'package:digital_pamphlet/common/theme.dart';
+import 'package:digital_pamphlet/core/presentation/bloc/exhibition/exhibition_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +23,7 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<BottomNavigationBloc>()),
+        BlocProvider(create: (_) => getIt<ExhibitionBloc>()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
