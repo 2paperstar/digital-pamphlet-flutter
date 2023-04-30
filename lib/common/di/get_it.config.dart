@@ -11,7 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:digital_pamphlet/booth/presentation/bloc/items_search_bloc.dart'
     as _i6;
-import 'package:digital_pamphlet/common/di/app_module.dart' as _i14;
+import 'package:digital_pamphlet/common/di/app_module.dart' as _i17;
 import 'package:digital_pamphlet/core/application/service/ticket_check_service.dart'
     as _i11;
 import 'package:digital_pamphlet/core/infrastructure/api/rest_client.dart'
@@ -26,6 +26,12 @@ import 'package:digital_pamphlet/core/presentation/bloc/detail_select/detail_sel
     as _i4;
 import 'package:digital_pamphlet/core/presentation/bloc/exhibition/exhibition_bloc.dart'
     as _i13;
+import 'package:digital_pamphlet/pamphlet/application/service/fetch_exhibition_map_service.dart'
+    as _i14;
+import 'package:digital_pamphlet/pamphlet/infrastructure/service/rest_fetch_exhibition_map_service.dart'
+    as _i15;
+import 'package:digital_pamphlet/pamphlet/presentation/bloc/exhibition_map/exhibition_map_bloc.dart'
+    as _i16;
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/pamphlet_image/pamphlet_image_bloc.dart'
     as _i9;
 import 'package:dio/dio.dart' as _i5;
@@ -62,8 +68,15 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i13.ExhibitionBloc>(
         () => _i13.ExhibitionBloc(gh<_i11.TicketCheckService>()));
+    gh.lazySingleton<_i14.FetchExhibitionMapService>(
+        () => _i15.RestFetchExhibitionMapService(
+              gh<_i10.RestClient>(),
+              gh<_i7.Logger>(),
+            ));
+    gh.factory<_i16.ExhibitionMapBloc>(
+        () => _i16.ExhibitionMapBloc(gh<_i14.FetchExhibitionMapService>()));
     return this;
   }
 }
 
-class _$AppModule extends _i14.AppModule {}
+class _$AppModule extends _i17.AppModule {}
