@@ -22,7 +22,7 @@ MapSection _$MapSectionFromJson(Map<String, dynamic> json) {
 mixin _$MapSection {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  List<int> get block => throw _privateConstructorUsedError;
+  List<double> get block => throw _privateConstructorUsedError;
   int get level => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $MapSectionCopyWith<$Res> {
           MapSection value, $Res Function(MapSection) then) =
       _$MapSectionCopyWithImpl<$Res, MapSection>;
   @useResult
-  $Res call({int id, String name, List<int> block, int level});
+  $Res call({int id, String name, List<double> block, int level});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$MapSectionCopyWithImpl<$Res, $Val extends MapSection>
       block: null == block
           ? _value.block
           : block // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<double>,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_MapSectionCopyWith<$Res>
       __$$_MapSectionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, List<int> block, int level});
+  $Res call({int id, String name, List<double> block, int level});
 }
 
 /// @nodoc
@@ -118,7 +118,7 @@ class __$$_MapSectionCopyWithImpl<$Res>
       block: null == block
           ? _value._block
           : block // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as List<double>,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -129,13 +129,14 @@ class __$$_MapSectionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MapSection implements _MapSection {
+class _$_MapSection extends _MapSection {
   const _$_MapSection(
       {required this.id,
       required this.name,
-      required final List<int> block,
+      required final List<double> block,
       required this.level})
-      : _block = block;
+      : _block = block,
+        super._();
 
   factory _$_MapSection.fromJson(Map<String, dynamic> json) =>
       _$$_MapSectionFromJson(json);
@@ -144,9 +145,9 @@ class _$_MapSection implements _MapSection {
   final int id;
   @override
   final String name;
-  final List<int> _block;
+  final List<double> _block;
   @override
-  List<int> get block {
+  List<double> get block {
     if (_block is EqualUnmodifiableListView) return _block;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_block);
@@ -190,12 +191,13 @@ class _$_MapSection implements _MapSection {
   }
 }
 
-abstract class _MapSection implements MapSection {
+abstract class _MapSection extends MapSection {
   const factory _MapSection(
       {required final int id,
       required final String name,
-      required final List<int> block,
+      required final List<double> block,
       required final int level}) = _$_MapSection;
+  const _MapSection._() : super._();
 
   factory _MapSection.fromJson(Map<String, dynamic> json) =
       _$_MapSection.fromJson;
@@ -205,7 +207,7 @@ abstract class _MapSection implements MapSection {
   @override
   String get name;
   @override
-  List<int> get block;
+  List<double> get block;
   @override
   int get level;
   @override

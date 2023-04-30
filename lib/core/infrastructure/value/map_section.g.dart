@@ -10,7 +10,9 @@ _$_MapSection _$$_MapSectionFromJson(Map<String, dynamic> json) =>
     _$_MapSection(
       id: json['id'] as int,
       name: json['name'] as String,
-      block: (json['block'] as List<dynamic>).map((e) => e as int).toList(),
+      block: (json['block'] as List<dynamic>)
+          .map((e) => (e as num).toDouble())
+          .toList(),
       level: json['level'] as int,
     );
 

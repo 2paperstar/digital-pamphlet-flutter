@@ -1,7 +1,5 @@
 import 'package:digital_pamphlet/common/di/get_it.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/detail_select/detail_select_bloc.dart';
-import 'package:digital_pamphlet/core/presentation/bloc/exhibition/exhibition_bloc.dart';
-import 'package:digital_pamphlet/pamphlet/domain/booth_box.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/exhibition_map/exhibition_map_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/bloc/pamphlet_image/pamphlet_image_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/widget/booth_bottom_sheet.dart';
@@ -10,30 +8,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-const _boothBoxList = [
-  BoothBox(left: 57, top: 147, width: 100, height: 144, text: '트랙4'),
-  BoothBox(left: 412, top: 147, width: 146, height: 144, text: '트랙6'),
-  BoothBox(left: 246, top: 291, width: 168, height: 60, text: '기념품 받는 곳'),
-  BoothBox(left: 159, top: 147, width: 100, height: 144, text: '트랙5'),
-  BoothBox(left: 88, top: 534, width: 70, height: 155, text: '??'),
-];
-
 class PamphletView extends StatelessWidget {
   const PamphletView({super.key});
 
   Widget _buildDetail(int index) {
-    final description = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          _boothBoxList[index].text,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        const Text('즐거운 마음으로 커피를 내려 파는 곳'),
-        const Text('0000'),
-        const SizedBox(height: 8),
-        const Text('운영 중 • 대기열 n 명'),
-      ],
+    final description = BlocBuilder<ExhibitionMapBloc, ExhibitionMapState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          loaded: (maps) {
+            return BlocBuilder<DetailSelectBloc, DetailSelectState>(
+                builder: (context, detailState) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    maps[detailState.floor].sections[index].name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const Text('즐거운 마음으로 커피를 내려 파는 곳'),
+                  const Text('0000'),
+                  const SizedBox(height: 8),
+                  const Text('운영 중 • 대기열 n 명'),
+                ],
+              );
+            });
+          },
+          orElse: () => Container(),
+        );
+      },
     );
 
     final detailButton = Builder(
@@ -140,19 +142,34 @@ class PamphletView extends StatelessWidget {
         child: BlocBuilder<PamphletImageBloc, PamphletImageState>(
           builder: (context, state) {
             return state.maybeWhen(
-              loaded: (image) => PamphletCanvas(
-                image: image,
-                boothBoxList: _boothBoxList,
-                selectedBoothIndex: context
-                    .select((DetailSelectBloc bloc) => bloc.state)
-                    .maybeWhen(
-                      selected: (_, index) => index,
-                      orElse: () => null,
-                    ),
-                onSelectBooth: (index) {
-                  context.read<DetailSelectBloc>().add(index == null
-                      ? const DetailSelectEvent.unselectBooth()
-                      : DetailSelectEvent.selectBooth(index));
+              loaded: (image) =>
+                  BlocBuilder<ExhibitionMapBloc, ExhibitionMapState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    loaded: (maps) =>
+                        BlocBuilder<DetailSelectBloc, DetailSelectState>(
+                            builder: (context, detailState) {
+                      return PamphletCanvas(
+                        image: image,
+                        boothBoxList: maps[detailState.floor]
+                            .sections
+                            .map((e) => e.boothBox)
+                            .toList(),
+                        selectedBoothIndex: context
+                            .select((DetailSelectBloc bloc) => bloc.state)
+                            .maybeWhen(
+                              selected: (_, index) => index,
+                              orElse: () => null,
+                            ),
+                        onSelectBooth: (index) {
+                          context.read<DetailSelectBloc>().add(index == null
+                              ? const DetailSelectEvent.unselectBooth()
+                              : DetailSelectEvent.selectBooth(index));
+                        },
+                      );
+                    }),
+                    orElse: () => Container(),
+                  );
                 },
               ),
               orElse: () => Container(),
