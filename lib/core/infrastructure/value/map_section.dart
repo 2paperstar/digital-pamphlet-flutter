@@ -21,6 +21,7 @@ class MapSection with _$MapSection {
         width: block[3],
         height: block[2],
         text: name,
+        level: level,
       );
 
   factory MapSection.fromJson(Map<String, dynamic> json) =>

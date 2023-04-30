@@ -21,6 +21,7 @@ mixin _$BoothBox {
   double get width => throw _privateConstructorUsedError;
   double get height => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
+  int get level => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BoothBoxCopyWith<BoothBox> get copyWith =>
@@ -33,7 +34,12 @@ abstract class $BoothBoxCopyWith<$Res> {
       _$BoothBoxCopyWithImpl<$Res, BoothBox>;
   @useResult
   $Res call(
-      {double left, double top, double width, double height, String text});
+      {double left,
+      double top,
+      double width,
+      double height,
+      String text,
+      int level});
 }
 
 /// @nodoc
@@ -54,6 +60,7 @@ class _$BoothBoxCopyWithImpl<$Res, $Val extends BoothBox>
     Object? width = null,
     Object? height = null,
     Object? text = null,
+    Object? level = null,
   }) {
     return _then(_value.copyWith(
       left: null == left
@@ -76,6 +83,10 @@ class _$BoothBoxCopyWithImpl<$Res, $Val extends BoothBox>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -88,7 +99,12 @@ abstract class _$$_BoothBoxCopyWith<$Res> implements $BoothBoxCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {double left, double top, double width, double height, String text});
+      {double left,
+      double top,
+      double width,
+      double height,
+      String text,
+      int level});
 }
 
 /// @nodoc
@@ -107,6 +123,7 @@ class __$$_BoothBoxCopyWithImpl<$Res>
     Object? width = null,
     Object? height = null,
     Object? text = null,
+    Object? level = null,
   }) {
     return _then(_$_BoothBox(
       left: null == left
@@ -129,6 +146,10 @@ class __$$_BoothBoxCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      level: null == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -141,7 +162,8 @@ class _$_BoothBox extends _BoothBox {
       required this.top,
       required this.width,
       required this.height,
-      required this.text})
+      required this.text,
+      required this.level})
       : super._();
 
   @override
@@ -154,10 +176,12 @@ class _$_BoothBox extends _BoothBox {
   final double height;
   @override
   final String text;
+  @override
+  final int level;
 
   @override
   String toString() {
-    return 'BoothBox(left: $left, top: $top, width: $width, height: $height, text: $text)';
+    return 'BoothBox(left: $left, top: $top, width: $width, height: $height, text: $text, level: $level)';
   }
 
   @override
@@ -169,11 +193,13 @@ class _$_BoothBox extends _BoothBox {
             (identical(other.top, top) || other.top == top) &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.level, level) || other.level == level));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, left, top, width, height, text);
+  int get hashCode =>
+      Object.hash(runtimeType, left, top, width, height, text, level);
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +214,8 @@ abstract class _BoothBox extends BoothBox {
       required final double top,
       required final double width,
       required final double height,
-      required final String text}) = _$_BoothBox;
+      required final String text,
+      required final int level}) = _$_BoothBox;
   const _BoothBox._() : super._();
 
   @override
@@ -201,6 +228,8 @@ abstract class _BoothBox extends BoothBox {
   double get height;
   @override
   String get text;
+  @override
+  int get level;
   @override
   @JsonKey(ignore: true)
   _$$_BoothBoxCopyWith<_$_BoothBox> get copyWith =>

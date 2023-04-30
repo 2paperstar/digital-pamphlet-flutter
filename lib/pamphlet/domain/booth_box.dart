@@ -14,6 +14,7 @@ class BoothBox with _$BoothBox {
     required double width,
     required double height,
     required String text,
+    required int level,
   }) = _BoothBox;
 
   Rect get rect => Rect.fromLTWH(left, top, width, height);

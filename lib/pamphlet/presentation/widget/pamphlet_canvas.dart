@@ -10,13 +10,15 @@ class PamphletCanvas extends StatelessWidget {
   final List<BoothBox> boothBoxList;
   final int? selectedBoothIndex;
 
-  const PamphletCanvas({
+  PamphletCanvas({
     super.key,
     required this.image,
     this.onSelectBooth,
     this.boothBoxList = const [],
     this.selectedBoothIndex,
-  });
+  }) {
+    boothBoxList.sort((a, b) => a.level - b.level);
+  }
 
   Rect _getContainedRect(Rect rect, Size size) {
     final ratio = min(size.width / image.width, size.height / image.height);
