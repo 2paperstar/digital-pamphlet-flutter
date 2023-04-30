@@ -7,6 +7,7 @@ import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom
 import 'package:digital_pamphlet/core/presentation/bloc/detail_select/detail_select_bloc.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/exhibition/exhibition_bloc.dart';
 import 'package:digital_pamphlet/exhibition/presentation/view/exhibition_events_view.dart';
+import 'package:digital_pamphlet/pamphlet/presentation/bloc/exhibition_map/exhibition_map_bloc.dart';
 import 'package:digital_pamphlet/pamphlet/presentation/view/pamphlet_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,8 +61,22 @@ class MainView extends StatelessWidget {
     ];
     return DefaultTabController(
       length: pages.length,
-      child: BlocProvider(
-        create: (context) => getIt<DetailSelectBloc>(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<DetailSelectBloc>(),
+          ),
+          BlocProvider(
+            create: (context) {
+              final id = context.read<ExhibitionBloc>().state.whenOrNull(
+                    selected: (exhibitionId, _) => exhibitionId,
+                  );
+              final bloc = getIt<ExhibitionMapBloc>();
+              if (id == null) return bloc;
+              return bloc..add(ExhibitionMapEvent.load(id));
+            },
+          )
+        ],
         child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
           builder: (context, state) {
             final tabController = DefaultTabController.of(context);

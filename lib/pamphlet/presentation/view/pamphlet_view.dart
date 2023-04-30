@@ -97,7 +97,7 @@ class PamphletView extends StatelessWidget {
         loaded: (maps) {
           context.read<PamphletImageBloc>().add(
                 PamphletImageEvent.loadNetworkImage(
-                    'http://localorder.link:3000/image/${maps[0].image.id}'),
+                    'http://localorder.link:3000/image/${maps[context.read<DetailSelectBloc>().state.floor].image.id}'),
               );
           return BlocListener<DetailSelectBloc, DetailSelectState>(
             listener: (context, state) => context.read<PamphletImageBloc>().add(
@@ -165,22 +165,8 @@ class PamphletView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<PamphletImageBloc>(),
-        ),
-        BlocProvider(
-          create: (context) {
-            final id = context.read<ExhibitionBloc>().state.whenOrNull(
-                  selected: (exhibitionId, _) => exhibitionId,
-                );
-            final bloc = getIt<ExhibitionMapBloc>();
-            if (id == null) return bloc;
-            return bloc..add(ExhibitionMapEvent.load(id));
-          },
-        )
-      ],
+    return BlocProvider(
+      create: (context) => getIt<PamphletImageBloc>(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
