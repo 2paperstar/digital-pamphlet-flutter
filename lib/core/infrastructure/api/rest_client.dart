@@ -4,10 +4,10 @@ import 'package:retrofit/retrofit.dart';
 
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: 'http://localorder.link:5000')
+@RestApi(baseUrl: 'http://localorder.link:3000')
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
-  @GET('/exhibition/ticket')
-  Future<ExhibitionTicket> getTicket(@Query('uuid') String uuid);
+  @GET('/exhibitions/0/tickets/{uuid}')
+  Future<ExhibitionTicket> getTicket(@Path('uuid') String uuid);
 }

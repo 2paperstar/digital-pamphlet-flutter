@@ -13,7 +13,7 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://localorder.link:5000';
+    baseUrl ??= 'http://localorder.link:3000';
   }
 
   final Dio _dio;
@@ -23,7 +23,7 @@ class _RestClient implements RestClient {
   @override
   Future<ExhibitionTicket> getTicket(String uuid) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'uuid': uuid};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -34,7 +34,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              '/exhibition/ticket',
+              '/exhibitions/0/tickets/${uuid}',
               queryParameters: queryParameters,
               data: _data,
             )
