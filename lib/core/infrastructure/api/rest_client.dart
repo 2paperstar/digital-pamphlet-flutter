@@ -1,3 +1,4 @@
+import 'package:digital_pamphlet/core/infrastructure/value/exhibition_map.dart';
 import 'package:digital_pamphlet/core/infrastructure/value/exhibition_ticket.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
@@ -10,4 +11,7 @@ abstract class RestClient {
 
   @GET('/exhibitions/0/tickets/{uuid}')
   Future<ExhibitionTicket> getTicket(@Path('uuid') String uuid);
+
+  @GET('/exhibitions/{id}/maps')
+  Future<List<ExhibitionMap>> getExhibitionMaps(@Path('id') int id);
 }

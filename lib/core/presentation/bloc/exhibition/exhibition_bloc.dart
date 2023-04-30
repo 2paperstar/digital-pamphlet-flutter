@@ -30,7 +30,6 @@ class ExhibitionBloc extends Bloc<ExhibitionEvent, ExhibitionState> {
           } catch (_) {
             emit(ExhibitionState.unselected(state.code));
           }
-          // emit(ExhibitionState.selected(state.code));
         },
       );
     });
