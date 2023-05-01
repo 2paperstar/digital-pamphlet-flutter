@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:digital_pamphlet/core/presentation/bloc/bottom_navigation/bottom_navigation_items.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class BoothBottomSheet extends StatelessWidget {
-  const BoothBottomSheet({super.key});
+  final String name;
+  final String title;
+  final String subTitle;
+  final int current;
+
+  const BoothBottomSheet({
+    super.key,
+    required this.name,
+    required this.title,
+    required this.subTitle,
+    required this.current,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +27,12 @@ class BoothBottomSheet extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
-              color: Colors.red,
+            SizedBox(
               height: 200,
+              child: Image.network(
+                'https://picsum.photos/400/200?${Random().nextInt(10000)}',
+                fit: BoxFit.cover,
+              ),
             ),
             Align(
               alignment: Alignment.topLeft,
@@ -37,15 +53,16 @@ class BoothBottomSheet extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  '커피를 내려 파는 곳',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                Text(
+                  name,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(height: 16),
-                const Text('즐거운 마음으로 커피를 내려 파는 곳'),
-                const Text('0000'),
+                Text(title),
+                Text(subTitle),
                 const SizedBox(height: 8),
-                const Text('운영 중 • 대기열 n 명'),
+                Text('운영 중 • 대기열 $current 명'),
                 Expanded(child: Container()),
                 ElevatedButton(
                   onPressed: () => context

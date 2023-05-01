@@ -8,6 +8,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+const _boothNames = [
+  '재야의커피',
+  'infoteam',
+  'GDSC',
+  'Wing',
+];
+
+const _representerNames = ['재야의커피', '인포팀', 'GDSC', 'Wing'];
+
+const _descriptions = [
+  '불편하지 않은 최상의커피를 내리는 것이 목표 입니다.',
+  '학생들의 편의를 위한 서비스를 만드는 것이 목표입니다. ',
+  'GDSC 기술을 체험해 보세요',
+  'wing의 기술력은 세계 제일!',
+];
+
+const _currents = [4, 6, 5, 9];
+
 class PamphletView extends StatelessWidget {
   const PamphletView({super.key});
 
@@ -22,13 +40,13 @@ class PamphletView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    maps[detailState.floor].sections[index].name,
+                    _boothNames[index % _boothNames.length],
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  const Text('즐거운 마음으로 커피를 내려 파는 곳'),
-                  const Text('0000'),
+                  Text(_descriptions[index % _descriptions.length]),
+                  Text(_representerNames[index % _representerNames.length]),
                   const SizedBox(height: 8),
-                  const Text('운영 중 • 대기열 n 명'),
+                  Text('운영 중 • 대기열 ${_currents[index % _currents.length]} 명'),
                 ],
               );
             });
@@ -45,7 +63,12 @@ class PamphletView extends StatelessWidget {
           splashRadius: 20,
           onPressed: () => showModalBottomSheet(
             context: context,
-            builder: (context) => const BoothBottomSheet(),
+            builder: (context) => BoothBottomSheet(
+              name: _boothNames[index % _boothNames.length],
+              title: _descriptions[index % _descriptions.length],
+              subTitle: _representerNames[index % _representerNames.length],
+              current: _currents[index % _currents.length],
+            ),
           ),
           icon: const Icon(Icons.info),
         );

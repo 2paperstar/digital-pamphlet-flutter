@@ -11,11 +11,6 @@ const _tabs = [
   '에쏘',
   '콜드브루',
   '에어로',
-  '원두',
-  '브루잉',
-  '에쏘',
-  '콜드브루',
-  '에어로'
 ];
 
 class BoothItemsView extends StatelessWidget {
